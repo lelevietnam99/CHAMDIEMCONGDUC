@@ -1,0 +1,17 @@
+:root {
+  --primary: #0d6efd;
+  --primary-dk: #0a58ca;
+  --success: #198754;
+  --danger: #dc3545;
+  --warning: #e67e22;
+  --bg: #f0f2f6;
+  --surface: #ffffff;
+  --border: #dee2e6;
+  --text: #1e2a3a;
+  --muted: #6c757d;
+  --header-a: #8a1c14;
+  --header-b: #c0392b;
+  --radius: 10px;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,.07);
+  --shadow-md: 0 4px 20px rgba(0,0,0,.1);
+}

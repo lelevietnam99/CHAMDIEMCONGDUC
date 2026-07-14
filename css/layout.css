@@ -1,0 +1,99 @@
+/* ═══════════════════════════════════════════════════════════
+   SHARED — HEADER
+═══════════════════════════════════════════════════════════ */
+.site-header {
+  background: linear-gradient(135deg, var(--header-a), var(--header-b));
+  color: #fff;
+  padding: 14px 24px;
+  box-shadow: 0 3px 14px rgba(0,0,0,.22);
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.site-header h1 { font-size: 1.25rem; font-weight: 700; text-transform: uppercase; letter-spacing: .4px; }
+.site-header .sub { font-size: .78rem; opacity: .78; margin-top: 2px; }
+.mode-badge {
+  background: rgba(255,255,255,.18);
+  border: 1px solid rgba(255,255,255,.3);
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: .82rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SHARED — SEARCH BAR & STAT CHIPS
+═══════════════════════════════════════════════════════════ */
+.search-wrap { position: relative; }
+.search-wrap i {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  font-size: .78rem;
+  pointer-events: none;
+}
+.search-wrap input {
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 7px 10px 7px 30px;
+  font-size: .86rem;
+  width: 210px;
+  background: var(--surface);
+  outline: none;
+  transition: border-color .2s;
+}
+.search-wrap input:focus { border-color: var(--primary); }
+
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  max-width: 1200px;
+  margin: 20px auto 0;
+  padding: 0 20px;
+}
+.stat-row.stat-row-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 900px) {
+  .stat-row { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 520px) {
+  .stat-row { grid-template-columns: 1fr; }
+}
+.stat-chip {
+  background: var(--surface);
+  border-radius: 9px;
+  padding: 12px 18px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: .83rem;
+  font-weight: 600;
+  color: var(--muted);
+  border-left: 4px solid transparent;
+  min-width: 0;
+}
+.stat-chip.blue { border-color: var(--primary); }
+.stat-chip.green { border-color: var(--success); }
+.stat-chip.orange { border-color: var(--warning); }
+.stat-chip.red { border-color: var(--danger); }
+.stat-chip.teal { border-color: #0d9488; }
+.stat-chip.slate { border-color: #475569; }
+.stat-chip .icon { font-size: 1.4rem; flex-shrink: 0; }
+.stat-chip .val { font-size: 1.35rem; font-weight: 800; color: var(--text); font-variant-numeric: tabular-nums; }
+.stat-chip .lbl { font-size: .68rem; text-transform: uppercase; letter-spacing: .4px; line-height: 1.25; }
+
+.page { max-width: 1200px; margin: 22px auto 60px; padding: 0 20px; }

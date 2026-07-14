@@ -1,0 +1,29 @@
+/* ═══════════════════════════════════════════════════════════
+   MODAL
+═══════════════════════════════════════════════════════════ */
+.modal-backdrop {
+  position: fixed; inset: 0; background: rgba(0,0,0,.52); z-index: 10000;
+  display: none; align-items: flex-start; justify-content: center;
+  padding: 24px 16px; overflow-y: auto; -webkit-overflow-scrolling: touch;
+}
+.modal-backdrop.open { display: flex; }
+.modal-box {
+  background: var(--surface); width: 100%; max-width: 600px;
+  border-radius: 14px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,.22);
+  animation: mdIn .26s ease; display: flex; flex-direction: column;
+  max-height: calc(100vh - 48px); margin: auto; min-height: 0;
+}
+@keyframes mdIn { from{transform:translateY(-22px);opacity:0} to{transform:translateY(0);opacity:1} }
+.modal-hd {
+  background: linear-gradient(135deg, var(--header-a), var(--header-b));
+  color: #fff; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center;
+  flex-shrink: 0;
+}
+.modal-hd h3 { font-size: 1rem; font-weight: 700; }
+.modal-close { background: none; border: none; color: #fff; font-size: 1.3rem; cursor: pointer; opacity: .8; }
+.modal-close:hover { opacity: 1; }
+.modal-body { padding: 20px; overflow-y: auto; flex: 1 1 auto; min-height: 0; }
+.modal-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 18px;}
+.m-stat { background: #f4f6fb; border-radius: 8px; padding: 10px; text-align: center;}
+.m-stat .v { font-size: 1.4rem; font-weight: 800; color: var(--primary); font-variant-numeric: tabular-nums; }
+.m-stat .l { font-size: .68rem; color: var(--muted); text-transform: uppercase; letter-spacing: .4px; margin-top: 2px; }
