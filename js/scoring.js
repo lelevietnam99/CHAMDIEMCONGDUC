@@ -37,9 +37,9 @@
   PQQ.updateScoringLastUpdated = function (students) {
     const el = PQQ.$('scoringLastUpdated');
     if (!el) return;
-    const dates = (students || []).map(s => String(s.lastUpdated || '').trim()).filter(Boolean);
-    el.textContent = dates.length
-      ? `Cập nhật gần nhất: ${dates.sort().slice(-1)[0]}`
+    const latest = PQQ.getLatestLastUpdated(students);
+    el.textContent = latest
+      ? `Cập nhật gần nhất: ${latest}`
       : PQQ.MESSAGES.LAST_UPDATED_NONE;
   };
 

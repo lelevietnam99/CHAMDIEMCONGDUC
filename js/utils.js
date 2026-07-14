@@ -46,6 +46,45 @@
     return `${PQQ.padDatePart(m[1])}/${PQQ.padDatePart(m[2])}/${m[3]}`;
   };
 
+  /**
+   * Parse lastUpdated API → milliseconds so sánh được.
+   * Hỗ trợ: "HH:mm - dd/MM/yyyy", "dd/MM/yyyy HH:mm", "dd/MM/yyyy".
+   */
+  PQQ.parseLastUpdatedMs = function (raw) {
+    const s = String(raw || '').trim();
+    if (!s) return NaN;
+    let m = s.match(/^(\d{1,2}):(\d{2})\s*[-–]\s*(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+    if (m) {
+      return Date.UTC(+m[5], +m[4] - 1, +m[3], +m[1], +m[2]);
+    }
+    m = s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})(?:[ T]+(\d{1,2}):(\d{2}))?/);
+    if (m) {
+      return Date.UTC(+m[3], +m[2] - 1, +m[1], +(m[4] || 0), +(m[5] || 0));
+    }
+    return NaN;
+  };
+
+  /** Lấy chuỗi lastUpdated mới nhất theo thời gian thật (không sort string). */
+  PQQ.getLatestLastUpdated = function (students) {
+    let bestRaw = '';
+    let bestMs = -Infinity;
+    let fallback = '';
+    (students || []).forEach(s => {
+      const raw = String(s.lastUpdated || '').trim();
+      if (!raw) return;
+      const ms = PQQ.parseLastUpdatedMs(raw);
+      if (!isNaN(ms)) {
+        if (ms >= bestMs) {
+          bestMs = ms;
+          bestRaw = raw;
+        }
+      } else if (!fallback) {
+        fallback = raw;
+      }
+    });
+    return bestRaw || fallback;
+  };
+
   /** Chuẩn hóa ngày cập nhật từ API (HH:mm - dd/MM/yyyy) sang hiển thị gọn. */
   PQQ.formatUpdatedDisplay = function (raw) {
     const s = String(raw || '').trim();
