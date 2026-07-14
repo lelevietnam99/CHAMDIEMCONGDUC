@@ -1,34 +1,34 @@
-import { state } from './state.js';
-import { $, toSearchStr } from './utils.js';
+/* global PQQ */
+(function (PQQ) {
+  PQQ.handleDashSearchInput = function () {
+    const q = PQQ.toSearchStr(this.value);
+    const rows = PQQ.$('dashTableBody').querySelectorAll('tr[data-club-name]');
+    let visIdx = 1;
+    rows.forEach(tr => {
+      const show = !q || tr.dataset.clubName.includes(q);
+      tr.classList.toggle('hidden', !show);
+      if (show) tr.cells[0].textContent = visIdx++;
+    });
+  };
 
-export function initDashSearch() {
-  if (state.dashSearchBound) return;
-  state.dashSearchBound = true;
-  $('dashSearch').addEventListener('input', handleDashSearchInput);
-}
+  PQQ.initDashSearch = function () {
+    if (PQQ.state.dashSearchBound) return;
+    PQQ.state.dashSearchBound = true;
+    PQQ.$('dashSearch').addEventListener('input', PQQ.handleDashSearchInput);
+  };
 
-export function handleDashSearchInput() {
-  const q = toSearchStr(this.value);
-  const rows = $('dashTableBody').querySelectorAll('tr[data-club-name]');
-  let visIdx = 1;
-  rows.forEach(tr => {
-    const show = !q || tr.dataset.clubName.includes(q);
-    tr.classList.toggle('hidden', !show);
-    if (show) tr.cells[0].textContent = visIdx++;
-  });
-}
+  PQQ.handleScoringSearchInput = function () {
+    const q = PQQ.toSearchStr(this.value);
+    const rows = PQQ.$('cdTableBody').querySelectorAll('tr[data-student-id]');
+    rows.forEach(tr => {
+      const show = !q || tr.dataset.searchName.includes(q);
+      tr.classList.toggle('hidden', !show);
+    });
+  };
 
-export function initScoringSearch() {
-  if (state.scoringSearchBound) return;
-  state.scoringSearchBound = true;
-  $('cdSearch').addEventListener('input', handleScoringSearchInput);
-}
-
-export function handleScoringSearchInput() {
-  const q = toSearchStr(this.value);
-  const rows = $('cdTableBody').querySelectorAll('tr[data-student-id]');
-  rows.forEach(tr => {
-    const show = !q || tr.dataset.searchName.includes(q);
-    tr.classList.toggle('hidden', !show);
-  });
-}
+  PQQ.initScoringSearch = function () {
+    if (PQQ.state.scoringSearchBound) return;
+    PQQ.state.scoringSearchBound = true;
+    PQQ.$('cdSearch').addEventListener('input', PQQ.handleScoringSearchInput);
+  };
+})(window.PQQ || (window.PQQ = {}));

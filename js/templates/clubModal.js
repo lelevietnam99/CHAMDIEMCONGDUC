@@ -1,5 +1,7 @@
-export function getClubModalHtml() {
-  return `
+/* global PQQ */
+(function (PQQ) {
+  PQQ.getClubModalHtml = function () {
+    return `
 <div class="modal-backdrop" id="modalBackdrop">
   <div class="modal-box modal-club">
     <div class="modal-hd">
@@ -11,10 +13,11 @@ export function getClubModalHtml() {
     </div>
   </div>
 </div>`;
-}
+  };
 
-export function injectClubModal() {
-  if (document.getElementById('modalBackdrop')) return;
-  const root = document.getElementById('modalRoot') || document.body;
-  root.insertAdjacentHTML('beforeend', getClubModalHtml());
-}
+  PQQ.injectClubModal = function () {
+    if (document.getElementById('modalBackdrop')) return;
+    const root = document.getElementById('modalRoot') || document.body;
+    root.insertAdjacentHTML('beforeend', PQQ.getClubModalHtml());
+  };
+})(window.PQQ || (window.PQQ = {}));

@@ -1,5 +1,7 @@
-export function getScoringHtml() {
-  return `
+/* global PQQ */
+(function (PQQ) {
+  PQQ.getScoringHtml = function () {
+    return `
 <div id="chamdiem-section" style="display:none;">
   <div class="scoring-month-banner" id="scoringMonthBanner">
     <div class="banner-inner">
@@ -79,10 +81,11 @@ export function getScoringHtml() {
     </div>
   </div>
 </div>`;
-}
+  };
 
-export function injectScoring() {
-  if (document.getElementById('chamdiem-section')) return;
-  const root = document.getElementById('mainContainer') || document.body;
-  root.insertAdjacentHTML('beforeend', getScoringHtml());
-}
+  PQQ.injectScoring = function () {
+    if (document.getElementById('chamdiem-section')) return;
+    const root = document.getElementById('mainContainer') || document.body;
+    root.insertAdjacentHTML('beforeend', PQQ.getScoringHtml());
+  };
+})(window.PQQ || (window.PQQ = {}));

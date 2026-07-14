@@ -1,6 +1,9 @@
-export const SCORE_MAX = 10;
+/* global PQQ */
+window.PQQ = window.PQQ || {};
 
-export const SCORE_FIELDS = [
+PQQ.SCORE_MAX = 10;
+
+PQQ.SCORE_FIELDS = [
   { key: 'chuyenCan',  label: 'C.Cần',  fullLabel: 'Chuyên Cần', desc: 'Điểm danh, tham gia tập luyện đều đặn' },
   { key: 'phuTa',      label: 'Phụ Tá', fullLabel: 'Phụ Tá',     desc: 'Hỗ trợ HLV, giúp đỡ võ sinh khác' },
   { key: 'congQua',    label: 'C.Quả',  fullLabel: 'Công Quả',   desc: 'Tham gia công quả, phật sự hỗ trợ giải đấu' },
@@ -8,19 +11,19 @@ export const SCORE_FIELDS = [
   { key: 'giaiThiDau', label: 'G.Đấu',  fullLabel: 'Thi Đấu',    desc: 'Tham gia và thành tích thi đấu' }
 ];
 
-export const ACTIONS = {
+PQQ.ACTIONS = {
   GET_CHAM_CONG_DUC: 'getChamCongDuc',
   UPDATE_CHAM_CONG_DUC: 'updateChamCongDuc',
   NOTIFY_SLACK_CONG_DUC: 'notifySlackCongDuc'
 };
 
-export const TOAST_ICONS = {
+PQQ.TOAST_ICONS = {
   ok: 'fa-circle-check',
   err: 'fa-circle-exclamation',
   wrn: 'fa-triangle-exclamation'
 };
 
-export const MESSAGES = {
+PQQ.MESSAGES = {
   PARSE_ERROR: 'Lỗi phân tích dữ liệu từ máy chủ.',
   API_ERROR: 'Lỗi API',
   NO_CHANGES: 'Chưa có thay đổi để gửi.',
@@ -35,7 +38,7 @@ export const MESSAGES = {
   LOADING: 'Đang tải…'
 };
 
-export const RUBRIC_SECTIONS = [
+PQQ.RUBRIC_SECTIONS = [
   {
     title: 'Chuyên cần',
     desc: 'Đánh giá mức độ tham gia tập luyện trong tháng.',
@@ -93,10 +96,10 @@ export const RUBRIC_SECTIONS = [
   }
 ];
 
-export const RUBRIC_NOTE =
+PQQ.RUBRIC_NOTE =
   'Điểm cần phản ánh đúng quá trình rèn luyện trong tháng, đảm bảo công bằng, khách quan và nhất quán giữa các HLV. Các trường hợp đặc biệt (ốm đau, công tác, lý do chính đáng…) có thể được HLV xem xét linh hoạt khi chấm điểm.';
 
-export const CHART_COLORS = {
+PQQ.CHART_COLORS = {
   overview: ['#0d6efd', '#198754', '#e67e22', '#0d9488', '#c0392b'],
   topClubHot: 'rgba(192,57,43,.85)',
   topClubNormal: 'rgba(13,110,253,.75)',
@@ -104,4 +107,4 @@ export const CHART_COLORS = {
   topStudentNormal: 'rgba(13,148,136,.72)'
 };
 
-export const SCORE_BAR_THRESHOLDS = { high: 8, mid: 5 };
+PQQ.SCORE_BAR_THRESHOLDS = { high: 8, mid: 5 };

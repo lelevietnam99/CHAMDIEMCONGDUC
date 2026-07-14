@@ -1,5 +1,7 @@
-export function getDashboardHtml() {
-  return `
+/* global PQQ */
+(function (PQQ) {
+  PQQ.getDashboardHtml = function () {
+    return `
 <div id="admin-dashboard" style="display:none;">
   <div class="page" style="margin-top:20px;">
     <div class="card dash-overview">
@@ -19,13 +21,13 @@ export function getDashboardHtml() {
     <div class="dash-grid">
       <div class="card">
         <div class="card-header">
-          <span>Top 10 CLB — Tổng Công Đức năm</span>
+          <span>🏆 Top 10 CLB có tổng công đức cao nhất năm hiện tại</span>
         </div>
         <div class="chart-wrap"><canvas id="topChart"></canvas></div>
       </div>
       <div class="card">
         <div class="card-header">
-          <span>Top 10 Võ sinh — Tổng Công Đức năm</span>
+          <span>🥇 Top 10 Võ sinh có tổng công đức cao nhất năm hiện tại</span>
         </div>
         <div class="chart-wrap"><canvas id="topStudentsChart"></canvas></div>
       </div>
@@ -59,10 +61,11 @@ export function getDashboardHtml() {
     </div>
   </div>
 </div>`;
-}
+  };
 
-export function injectDashboard() {
-  if (document.getElementById('admin-dashboard')) return;
-  const root = document.getElementById('mainContainer') || document.body;
-  root.insertAdjacentHTML('beforeend', getDashboardHtml());
-}
+  PQQ.injectDashboard = function () {
+    if (document.getElementById('admin-dashboard')) return;
+    const root = document.getElementById('mainContainer') || document.body;
+    root.insertAdjacentHTML('beforeend', PQQ.getDashboardHtml());
+  };
+})(window.PQQ || (window.PQQ = {}));

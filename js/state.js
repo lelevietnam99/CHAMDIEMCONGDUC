@@ -1,4 +1,7 @@
-export const state = {
+/* global PQQ */
+window.PQQ = window.PQQ || {};
+
+PQQ.state = {
   mode: '',
   clbParam: '',
   allStudents: [],
